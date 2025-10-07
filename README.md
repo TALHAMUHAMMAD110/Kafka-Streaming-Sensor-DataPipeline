@@ -47,6 +47,7 @@ docker-compose up --build
 ## Running Pyspark datapipeline
 
 - Open a terminal from jupyter lab UI
+- Make sure you are in this /home/jovyan/work
 - Run this command to start the pyspark job for ingesting real time data and out the aggregated events to sensor-output topic
 
 ```
@@ -57,7 +58,7 @@ spark-submit --master local[*] --packages org.apache.spark:spark-sql-kafka-0-10_
 ## Running Test for Pyspark datapipeline
 
 - Open a terminal from jupyter lab UI
-- Change the dir to /src
+- Change the dir to /home/jovyan/work/src
 - Run this command to unittest data pipeline
 
 ```

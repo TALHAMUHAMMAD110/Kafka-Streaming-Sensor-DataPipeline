@@ -47,7 +47,7 @@ docker-compose up --build
 ## Running Pyspark datapipeline
 
 - Open a terminal from jupyter lab UI
-- Make sure you are in this /home/jovyan/work
+- Make sure you are in this dir /home/jovyan/work
 - Run this command to start the pyspark job for ingesting real time data and out the aggregated events to sensor-output topic
 
 ```

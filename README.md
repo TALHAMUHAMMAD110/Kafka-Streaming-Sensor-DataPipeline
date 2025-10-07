@@ -54,8 +54,20 @@ spark-submit --master local[*] --packages org.apache.spark:spark-sql-kafka-0-10_
 
 ```
 
+## Running Test for Pyspark datapipeline
+
+- Open a terminal from jupyter lab UI
+- Run this command to unittest data pipeline
+
+```
+pip install pytest
+python -m pytest tests/ -v
+
+```
+
 ## Checking the output
 
 - Check the Kafka UI at http://localhost:8080/ui/docker-kafka-server/topic
 - sensor-input have the input data
 - sensor-output have the aggreated output data
+  ![Kafka UI](./kafka-output.png "Docker Containers")

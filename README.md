@@ -40,3 +40,22 @@ docker-compose up --build
 ```
 
 - Wait for 2-3 minutes until all of the docker containers are running.
+- Then click on pyspark container and go to logs and click on the link starting with http://127.0.0.1:8888/
+  ![Dockers Container](./containers.png "Docker Containers")
+- After clicking the link the jupyter lab will be opened
+
+## Running Pyspark datapipeline
+
+- Open a terminal from jupyter lab UI
+- Run this command to start the pyspark job for ingesting real time data and out the aggregated events to sensor-output topic
+
+```
+spark-submit --master local[*] --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1,org.mongodb.spark:mongo-spark-connector_2.12:10.3.0 src/main.py
+
+```
+
+## Checking the output
+
+- Check the Kafka UI at http://localhost:8080/ui/docker-kafka-server/topic
+- sensor-input have the input data
+- sensor-output have the aggreated output data

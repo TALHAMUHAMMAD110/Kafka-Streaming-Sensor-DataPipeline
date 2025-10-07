@@ -26,3 +26,17 @@ Spark: Structured Streaming to process the data from kafka, aggregating data usi
 Spark Structured Steaming API: For writing out the data streams to RDBMS/ NoSQL databases/datawarehouse like Hive/S3.
 
 ![Kafka-Spark Architecture](./ArchitectureDiagram.png "Architecture")
+
+## Prepare your development environment
+
+- Install Docker in your local machine
+- Run Kafka and Kafka Producer
+
+'start' Run following commands in your terminal.
+
+```
+docker-compose up --build
+
+```
+
+- Wait for 2-3 minutes until all of the docker containers are running.

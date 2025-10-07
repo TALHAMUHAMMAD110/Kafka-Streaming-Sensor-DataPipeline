@@ -57,6 +57,7 @@ spark-submit --master local[*] --packages org.apache.spark:spark-sql-kafka-0-10_
 ## Running Test for Pyspark datapipeline
 
 - Open a terminal from jupyter lab UI
+- Change the dir to /src
 - Run this command to unittest data pipeline
 
 ```

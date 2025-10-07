@@ -17,4 +17,12 @@ This project ingests sensor data from a Kafka topic, performs real-time aggregat
 
 ---
 
-## Project Structure
+## Architecture
+
+Kafka : To persist the incoming streaming messages and deliver to spark application
+
+Spark: Structured Streaming to process the data from kafka, aggregating data using Data Frames. (Spark-SQL).
+
+Spark Structured Steaming API: For writing out the data streams to RDBMS/ NoSQL databases/datawarehouse like Hive/S3.
+
+![Kafka-Spark Architecture](./ArchitectureDiagram.png "Architecture")

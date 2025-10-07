@@ -103,7 +103,6 @@ services:
       - mongodb
     volumes:
       - ./src:/home/jovyan/work/src
-      - ./tests:/home/jovyan/work/tests
       - ./checkpoints:/home/jovyan/work/checkpoints
 
     command: []

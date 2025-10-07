@@ -32,7 +32,7 @@ Spark Structured Steaming API: For writing out the data streams to RDBMS/ NoSQL 
 - Install Docker in your local machine
 - Run Kafka and Kafka Producer
 
-'start' Run following commands in your terminal.
+Go to the current project directory and run the following command in your terminal.
 
 ```
 docker-compose up --build

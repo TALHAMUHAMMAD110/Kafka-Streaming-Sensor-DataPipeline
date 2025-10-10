@@ -5,6 +5,8 @@ services:
     image: confluentinc/cp-kafka:7.6.1
     hostname: broker
     container_name: broker
+    networks:
+      - spark-net
     ports:
       - "9092:9092"
       - "9101:9101"
@@ -36,6 +38,8 @@ services:
   akhq:
     image: tchiotludo/akhq:0.25.0
     container_name: akhq
+    networks:
+      - spark-net
     ports:
       - "8080:8080"
     depends_on:
@@ -54,6 +58,8 @@ services:
     depends_on:
       broker:
         condition: service_healthy
+    networks:
+      - spark-net
     volumes:
       - ./kafka:/kafka
     command:
@@ -68,6 +74,8 @@ services:
       context: .
       dockerfile: kafka/Dockerfile.producer
     container_name: sensor-producer
+    networks:
+      - spark-net
     depends_on:
       broker:
         condition: service_healthy
@@ -84,10 +92,19 @@ services:
   mongodb:
     image: mongo:6.0
     container_name: mongodb
+    hostname: mongo # Added hostname
     ports:
       - "27017:27017"
+    networks:
+      - spark-net
     volumes:
       - ./mongo_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
 
   # Spark / PySpark Streaming Job
   pyspark:
@@ -99,10 +116,20 @@ services:
       - 8888:8888
       - 4040:4040
     depends_on:
-      - broker
-      - mongodb
+      mongodb:
+        condition: service_healthy
+      broker:
+        condition: service_healthy
+    networks:
+      - spark-net
     volumes:
       - ./src:/home/jovyan/work/src
+      - ./tests:/home/jovyan/work/tests
       - ./checkpoints:/home/jovyan/work/checkpoints
-
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/spark_db # Add environment variable
     command: []
+
+networks:
+  spark-net:
+    driver: bridge

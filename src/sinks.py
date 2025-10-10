@@ -12,11 +12,9 @@ def write_to_mongo(df, uri, db, collection, checkpoint):
     df.writeStream \
       .outputMode("append") \
       .format("mongodb") \
-      .option("spark.mongodb.output.uri", uri) \
-      .option("spark.mongodb.output.database", db) \
-      .option("spark.mongodb.output.collection", collection) \
+      .option("spark.mongodb.connection.uri", uri) \
+      .option("spark.mongodb.database", db) \
+      .option("spark.mongodb.collection", collection) \
       .option("checkpointLocation", checkpoint) \
       .start()
-      
-      
 

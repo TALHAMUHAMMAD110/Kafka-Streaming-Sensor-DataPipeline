@@ -11,6 +11,6 @@ df = parse_and_aggregate(spark, KAFKA_BROKER, KAFKA_INPUT_TOPIC)
 
 # Write to Kafka and MongoDB
 write_to_kafka(df, KAFKA_BROKER, KAFKA_OUTPUT_TOPIC, CHECKPOINT_KAFKA)
-# write_to_mongo(df, MONGO_URI, MONGO_DB, MONGO_COLLECTION, CHECKPOINT_MONGO)
+write_to_mongo(df, MONGO_URI, MONGO_DB, MONGO_COLLECTION, CHECKPOINT_MONGO)
 
 spark.streams.awaitAnyTermination()

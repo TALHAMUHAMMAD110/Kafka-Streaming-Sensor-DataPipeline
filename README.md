@@ -69,7 +69,16 @@ python -m pytest tests/ -v
 
 ## Checking the output
 
+### Kafka Output
+
 - Check the Kafka UI at http://localhost:8080/ui/docker-kafka-server/topic
 - sensor-input have the input data
 - sensor-output have the aggreated output data
-  ![Kafka UI](./kafka-output.png "Docker Containers")
+  ![Kafka UI](./kafka-output.png "Kafka Topics")
+
+### MongoDB Output
+
+- Intall MongoDB Compass in your local machine
+- Create a connection with mongodb://localhost:27017
+- Go to sensor data db and click on sensor output collection to view and query the data
+  ![MongoDB Compasss](./mongodb_output.png "MongoDB Output")

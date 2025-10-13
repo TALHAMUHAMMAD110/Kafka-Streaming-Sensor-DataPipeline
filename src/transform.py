@@ -1,4 +1,4 @@
-from pyspark.sql.functions import from_json, col, window, avg, timestamp_millis
+from pyspark.sql.functions import from_json, col, window, avg, timestamp_millis,round
 from schema import SENSOR_SCHEMA
 
 def parse_and_aggregate(spark, broker, topic):
@@ -15,7 +15,8 @@ def parse_and_aggregate(spark, broker, topic):
 
     aggregated = parsed.withWatermark("eventTime", "2 minutes") \
                        .groupBy(col("sensorId"), window(col("eventTime"), "1 minute")) \
-                       .agg(avg("value").alias("averageValue"))
+                       .agg(round(avg("value"), 2).alias("averageValue"))
+
 
     return aggregated.select(
         col("sensorId"),

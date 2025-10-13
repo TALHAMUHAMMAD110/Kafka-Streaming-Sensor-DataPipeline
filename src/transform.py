@@ -13,7 +13,7 @@ def parse_and_aggregate(spark, broker, topic):
                 .select("data.*") \
                 .withColumn("eventTime", timestamp_millis(col("timestamp")))
 
-    aggregated = parsed.withWatermark("eventTime", "2 minutes") \
+    aggregated = parsed.withWatermark("eventTime", "1 minutes") \
                        .groupBy(col("sensorId"), window(col("eventTime"), "1 minute")) \
                        .agg(round(avg("value"), 2).alias("averageValue"))
 

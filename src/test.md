@@ -10,10 +10,11 @@ This project ingests user events data from a Kafka topic, performs real-time agg
 
 - Reads sensor data from Kafka topic: `user-events`
 - Aggregates sensor readings in **1-minute windows**
-- Computes the **Count** for each lottery per event type
+- Computes the **Event Count** for each lottery per event type
 - Writes aggregated results to PostgresDB: `lottery_db`
 - Supports unit testing for transformations
 - Modular design with separate transformation and sink modules
+- On pipeline failure, an automatic email with the error will be sent. Configure credentials in the .env file
 
 ---
 

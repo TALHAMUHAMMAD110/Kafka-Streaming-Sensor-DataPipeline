@@ -25,7 +25,7 @@ Spark: Structured Streaming to process the data from kafka, aggregating data usi
 
 Spark Structured Steaming API: For writing out the data streams to DB like PostgresDB.
 
-![Kafka-Spark Architecture](./ArchitectureDiagram.png "Architecture")
+![Kafka-Spark Architecture](./realtimepipeline.png "Architecture")
 
 ## Prepare your development environment
 
